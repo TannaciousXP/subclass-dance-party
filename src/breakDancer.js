@@ -8,7 +8,8 @@ BreakDancer.prototype.constructor = BreakDancer;
 
 BreakDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
-  this.$node.fadeIn('slow');
+  this.$node.fadeIn('fast');
   this.$node.fadeOut('fast');
+  
   this.$node.addClass('breakDancer');
 };

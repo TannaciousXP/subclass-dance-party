@@ -31,10 +31,12 @@
 //   return dancer;
 // };
 
-var Dancer = function(top, left, timeBetweenSteps) {
+var Dancer = function(top, left, timeBetweenSteps, character) {
   
   // getting the HTML tag with pseudoclassical 
-  this.$node = $('<span class="dancer"></span>');
+  this.$node = character
+    ? $(`<img src='./pictures/characters/${character}' class="dancer"></span>`)
+    : $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
   
   this.step();

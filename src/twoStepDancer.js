@@ -20,11 +20,9 @@ TwoStepDancer.prototype.constructor = TwoStepDancer;
 TwoStepDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
   this.$node.slideUp('fast').slideDown('slow').animate({
-    opacity: 0.5,
     left: '-=100'
-  }, 1000).animate({
-    opacity: 1,
+  }, 500).animate({
     left: '+=100'
-  }, 1000);
+  }, 500);
   this.$node.addClass('twoStepDancer');
 };

@@ -1,7 +1,11 @@
 $(document).ready(function() {
   window.dancers = [];
 
+  const characters = ['Brook.png', 'chopper.png', 'franky.png', 'luffy.png', 'nami.png', 'robin.png', 'sanji.png', 'usopp.png', 'zoro.png'];
+
   $('.addDancerButton').on('click', function(event) {
+
+    const lastCharacter = characters.pop();
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -25,7 +29,8 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 1000,
+      lastCharacter
     );
     $('body').append(dancer.$node);
   });
