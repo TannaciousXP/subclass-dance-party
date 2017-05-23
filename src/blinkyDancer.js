@@ -24,26 +24,17 @@
 var BlinkyDancer = function(top, left, timeBetweenSteps) {
   //passing in all paramenters from makeDancer and save into var args
   var args = [].slice.call(arguments);
-
-  //passing in timeBtwnSteps from makeDancer save into var timeWait
-  // var timeWait = [].slice.call(arguments[2])[0];
-
-  //applying args from makeDancer to makeBlinkyDancer's prototype
   Dancer.apply(this, args);
-  this.oldStep = this.step();
   
-
-  //'this' === makeBlinkyDancer; invoke timeBtwnSteps function 
   
-  // this.dance = setTimeout(this.step(), this.timeBetweenSteps);
-  this.step();
 };
 
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
 BlinkyDancer.prototype.constructor = BlinkyDancer;
-BlinkyDancer.prototype.step = function() {
-  this.oldStep;  
+BlinkyDancer.prototype.step = function() {  
+  Dancer.prototype.step.call(this);
+  this.$node.addClass('blinkyDancer');  
   this.$node.toggle();
 };
 
