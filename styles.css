@@ -45,3 +45,23 @@ img {
   max-width: 4rem;
 }
 
+.lineUp, .random {
+  padding:5px 12px;
+  float:right;
+  background-color: #777;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation-name: spin;
+  animation-timing-function: random;
+  animation-duration: 300ms;
+}

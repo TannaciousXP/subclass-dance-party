@@ -31,7 +31,7 @@
 //   return dancer;
 // };
 
-var Dancer = function(top, left, timeBetweenSteps, character) {
+var Dancer = function(bottom, right, timeBetweenSteps, character) {
   
   // getting the HTML tag with pseudoclassical 
   this.$node = character
@@ -40,7 +40,7 @@ var Dancer = function(top, left, timeBetweenSteps, character) {
   this.timeBetweenSteps = timeBetweenSteps;
   
   this.step();
-  this.setPosition(top, left);
+  this.setPosition(bottom, right);
   // this.step.call(this, timeBetweenSteps);
   // this.setPosition.apply(this, positions);
   // return this;
@@ -52,10 +52,10 @@ Dancer.prototype.step = function() {
   setTimeout(this.step.bind(this), this.timeBetweenSteps);  
 };
 
-Dancer.prototype.setPosition = function(top, left) {
+Dancer.prototype.setPosition = function(bottom, right) {
   var styleSettings = {
-    top: top,
-    left: left
+    bottom: bottom,
+    right: right
   };
   this.$node.css(styleSettings);
 };

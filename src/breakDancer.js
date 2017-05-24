@@ -1,4 +1,4 @@
-var BreakDancer = function(top, left, timeBetweenSteps) {
+var BreakDancer = function(bottom, right, timeBetweenSteps) {
   var args = [].slice.call(arguments);
   Dancer.apply(this, args);
 };
@@ -12,4 +12,14 @@ BreakDancer.prototype.step = function() {
   this.$node.fadeOut('fast');
   
   this.$node.addClass('breakDancer');
+  $(document).ready(function() { 
+    $('.breakDancer, .blinkyDancer, .twoStepDancer').on('click', function(event) {
+      $(this).animate({'margin-top': '-=100'}, 300).animate({'margin-top': '+=100'}, 300);
+      $(this).addClass('spin');
+    });
+
+    $('.breakDancer, .blinkyDancer, .twoStepDancer').on('mouseleave', function(event) {
+      $(this).removeClass('spin');
+    });
+  });
 };

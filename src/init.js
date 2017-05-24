@@ -27,12 +27,48 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
+      $('body').height() * Math.random() * .35,
+      $('body').width() * Math.random() * .7,
       Math.random() * 1000,
       lastCharacter
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer.$node);    
   });
 });
+
+// this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) * .3) + $(window).scrollTop()) + "px");
+
+//  this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+
+$('.lineUp').on('click', function() {
+  // var left = 500;
+  var width = screen.width;
+  var dancerPosition = width / window.dancers.length;
+  window.dancers.forEach(function(dancer, index) {
+    dancer.css({bottom: screen.height * .35, right: dancerPosition * index - 100});
+  });
+});
+
+
+$('.random').on('click', function() {
+  window.dancers.forEach(function(dancer) {
+    dancer.css({bottom: $('body').height() * Math.random() * .35, right: $('body').width() * Math.random() * .7});
+  });
+});
+// $(document).ready(function() { 
+//   $('.breakDancer, .blinkyDancer, .twoStepDancer').on('click', function(event) {
+//     window.dancers.forEach(function(dancer) {
+//       $(dancer).animate({'margin-top': '-=100'}, 300).animate({'margin-top': '+=100'}, 300);
+//       $(dancer).addClass('spin');
+//     });
+//   });
+
+//   $('.breakDancer, .blinkyDancer, .twoStepDancer').on('mouseleave', function(event) {
+//     window.dancers.forEach(function(dancer) {
+//       $(dancer).removeClass('spin');
+//     });
+//   });
+// });
+
 

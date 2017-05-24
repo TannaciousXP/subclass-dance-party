@@ -21,7 +21,7 @@
 
 /* pseudoclassical instantiation */
 
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
+var BlinkyDancer = function(bottom, right, timeBetweenSteps) {
   //passing in all paramenters from makeDancer and save into var args
   var args = [].slice.call(arguments);
   Dancer.apply(this, args);
@@ -36,5 +36,15 @@ BlinkyDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
   this.$node.addClass('blinkyDancer');  
   this.$node.toggle();
+  $(document).ready(function() { 
+    $('.breakDancer, .blinkyDancer, .twoStepDancer').on('click', function(event) {
+      $(this).animate({'margin-top': '-=100'}, 300).animate({'margin-top': '+=100'}, 300);
+      $(this).addClass('spin');
+    });
+
+    $('.breakDancer, .blinkyDancer, .twoStepDancer').on('mouseleave', function(event) {
+      $(this).removeClass('spin');
+    });
+  });
 };
 
